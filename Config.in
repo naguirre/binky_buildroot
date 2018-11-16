@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_MINIMAL_RPI_PATH/package/squeezenfc/Config.in"

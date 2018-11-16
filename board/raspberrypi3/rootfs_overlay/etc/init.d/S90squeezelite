@@ -1,0 +1,52 @@
+#!/bin/sh
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+NAME=squeezelite
+ZONE_NAME=`hostname`
+MAC=`ifconfig -a |grep eth0 | awk '{print $5}'`
+USER=root
+DAEMON=/usr/bin/$NAME
+PIDLOCATION=/var/run/$NAME
+PIDFILE=$PIDLOCATION/$NAME.pid
+LOGFILE=/var/log/$NAME.log
+DAEMON_ARGS="-f "$LOGFILE" -z  -m "$MAC"  -P "$PIDFILE" -d all=info -M $ZONE_NAME"
+
+[ -x $binary ] || exit 0
+
+[ -d $PIDLOCATION ] || mkdir $PIDLOCATION
+
+RETVAL=0
+
+start() {
+    echo "Starting squeezelite"
+    start-stop-daemon --start --chuid $USER --quiet --pidfile "$PIDFILE" --exec "$DAEMON" -b --oknodo -- $DAEMON_ARGS
+}
+
+stop() {
+    echo "Shutting down squeezelite"
+    start-stop-daemon --stop --quiet --pidfile "$PIDFILE" --retry 1 --oknodo
+}
+
+restart() {
+    stop
+    sleep 1
+    start
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|restart}"
+        ;;
+esac
+
+exit 0

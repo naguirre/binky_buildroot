@@ -1,0 +1,6 @@
+config BR2_PACKAGE_SQUEEZENFC
+	bool "squeezenfc"
+    select BR2_PACKAGE_LIBNFC
+    select BR2_PACKAGE_LIBCURL
+	help
+		Add squeezenfc daemon
