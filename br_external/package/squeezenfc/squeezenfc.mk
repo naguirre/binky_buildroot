@@ -8,7 +8,7 @@ SQUEEZENFC_VERSION = local
 SQUEEZENFC_SITE = $(SQUEEZENFC_PKGDIR)/src
 SQUEEZENFC_LICENSE = GPLv3
 SQUEEZENFC_LICENSE_FILES = COPYING
-SQUEEZENFC_DEPENDENCIES = host-meson libnfc
+SQUEEZENFC_DEPENDENCIES = host-meson libnfc libcurl cjson
 
 SQUEEZENFC_CONF_OPTS += --prefix=/usr --libdir=/usr/lib --cross-file $(HOST_DIR)/etc/meson/cross-compilation.conf --buildtype=release
 
