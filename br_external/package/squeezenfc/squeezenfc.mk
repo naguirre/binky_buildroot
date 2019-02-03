@@ -3,9 +3,8 @@
 # Squeezenfc
 #
 ################################################################################
-SQUEEZENFC_SITE_METHOD = local
-SQUEEZENFC_VERSION = local
-SQUEEZENFC_SITE = $(SQUEEZENFC_PKGDIR)/src
+SQUEEZENFC_VERSION = 8f7925cec87f693e5a670785af152d6dd9f8ae58
+SQUEEZENFC_SITE = $(call github,naguirre,squeezenfc,$(SQUEEZENFC_VERSION))
 SQUEEZENFC_LICENSE = GPLv3
 SQUEEZENFC_LICENSE_FILES = COPYING
 SQUEEZENFC_DEPENDENCIES = host-meson libnfc libcurl cjson
