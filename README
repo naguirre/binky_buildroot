@@ -1,0 +1,40 @@
+# Thanks
+Base on Romain Reignier work : https://github.com/romainreignier/minimal_raspberrypi_buildroot
+
+# Build
+
+```
+git clone https://github.com/naguirre/binky_buildroot.git
+cd binky_buildroot
+```
+
+Sync git submodules, it will download buildroot itself.
+```
+git submodule init
+git submodule update
+```
+
+Patch libnfc package, as the current package doesn't build acr122_usb libnfc driver
+```
+cd buildroot
+patch -p1 < ../add_acr122_usb_driver_to_libnfc_package.patch
+cd ..
+```
+
+Launch the build
+```
+make binky_defconfig
+make
+```
+
+Onnce build is finished you can flash a SDCard with the image generated  : Image is located in
+```
+buildroot/output/images/sdcard.img
+```
+
+you can use dd to flash the sdcard or etcher https://www.balena.io/etcher/
+```
+dd of=/dev/mmcblk0 if=buildroot/output/images/sdcard.img
+```
+
+
