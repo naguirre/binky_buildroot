@@ -1,0 +1,13 @@
+diff --git a/board/raspberrypi/genimage-raspberrypi0w.cfg b/board/raspberrypi/genimage-raspberrypi0w.cfg
+index 3aafd9b6fc..1e2c04bb1d 100644
+--- a/board/raspberrypi/genimage-raspberrypi0w.cfg
++++ b/board/raspberrypi/genimage-raspberrypi0w.cfg
+@@ -11,7 +11,7 @@ image boot.vfat {
+       "zImage"
+     }
+   }
+-  size = 32M
++  size = 64M
+ }
+ 
+ image sdcard.img {
