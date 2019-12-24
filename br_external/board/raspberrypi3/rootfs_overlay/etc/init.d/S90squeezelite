@@ -4,7 +4,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 NAME=squeezelite
 ZONE_NAME=`hostname`
-MAC=`ifconfig -a |grep eth0 | awk '{print $5}'`
+MAC=`ifconfig -a |grep wlan0 | awk '{print $5}'`
 USER=root
 DAEMON=/usr/bin/$NAME
 PIDLOCATION=/var/run/$NAME
